@@ -3,13 +3,13 @@
 
 # 👋 Hi there, I'm Kiryl Rudzenia!
 
- /\_/\
-( o.o )  - Code. Debug. Repeat.
- > ^ <
+Wake up, Neo…
+The Matrix has you…
+Follow the white rabbit 🐇
 
 
-### 🧑‍💻 Android Developer
-Building **Essential MDM** – helping businesses rule their devices (and not the other way around).
+### 🧑‍💻 Android Developer  
+Crafting solutions for seamless device management and automation — making tech work **for** people, not the other way around. 🟢
 
 ---
 
@@ -45,10 +45,10 @@ Building **Essential MDM** – helping businesses rule their devices (and not th
 
 ---
 
-## ⚡ Fun Fact
-> “Programming is 10% writing code and 90% figuring out why it’s not working.” 😅
+## ✨ Random Dev Quote
+![Quote](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight)
 
 ---
 
-## ✨ Future Plans
-Fill this GitHub with awesome projects. Stay tuned — big things are on the way 🚀
+## 🟢 The Matrix Reloading...
+Projects uploading soon. Stay tuned. 🚀
