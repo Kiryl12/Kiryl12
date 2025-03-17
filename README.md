@@ -1,4 +1,4 @@
-### 🧑‍💻 Android Developer @ Techstep Poland  
+### 🧑‍💻 Android Developer
 Building **Essential MDM** – helping businesses rule their devices (and not the other way around).
 
 ---
