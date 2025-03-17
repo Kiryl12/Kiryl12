@@ -1,5 +1,5 @@
 <!-- Animated Typing Header -->
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&pause=1000&color=00F7FF&center=true&width=600&lines=Android+Dev+%7C+Linux+Fan+%7C+Automation+Lover+%7C+Coffee+Powered)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&pause=1000&color=00F7FF&center=true&width=600&lines=Android+Dev+%7C+Linux+Fan+%7C+Automation+Lover)](https://git.io/typing-svg)
 
 # 👋 Hi there, I'm Kiryl!
 
