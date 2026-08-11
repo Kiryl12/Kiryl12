@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рейтинг Спортсменов</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .rating-table {
+            width: 100%;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+
+        .rating-table thead {
+            background: #f8f9fa;
+        }
+
+        .rating-table th {
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+            color: #667eea;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .rating-table td {
+            padding: 20px;
+            border-bottom: 1px solid #e9ecef;
+            vertical-align: middle;
+        }
+
+        .rating-table tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        .rating-table tbody tr:hover {
+            background: #f8f9fa;
+            transform: scale(1.01);
+        }
+
+        .rank {
+            font-weight: 700;
+            font-size: 1.2rem;
+            width: 60px;
+        }
+
+        .rank-1 { color: #FFD700; }
+        .rank-2 { color: #C0C0C0; }
+        .rank-3 { color: #CD7F32; }
+
+        .athlete-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .athlete-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .athlete-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .athlete-country {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .rating-score {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #667eea;
+        }
+
+        .rating-change {
+            font-size: 0.9rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .change-up {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .change-down {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .change-same {
+            background: #e2e3e5;
+            color: #383d41;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .rating-table th:nth-child(4),
+            .rating-table td:nth-child(4) {
+                display: none;
+            }
+
+            .athlete-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏆 Рейтинг Спортсменов</h1>
+            <p>Официальный рейтинг участников соревнований</p>
+        </div>
+
+        <table class="rating-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Спортсмен</th>
+                    <th>Рейтинг</th>
+                    <th>Изменение</th>
+                    <th>Вид спорта</th>
+                </tr>
+            </thead>
+            <tbody id="athletes-body">
+                <!-- Данные будут загружены через JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Данные о спортсменах (можно заменить на загрузку с сервера)
+        const athletes = [
+            {
+                rank: 1,
+                name: "Александр Иванов",
+                country: "Россия 🇷🇺",
+                rating: 2850,
+                change: "+25",
+                changeType: "up",
+                sport: "Лёгкая атлетика",
+                initials: "АИ"
+            },
+            {
+                rank: 2,
+                name: "Дмитрий Петров",
+                country: "Беларусь 🇧🇾",
+                rating: 2820,
+                change: "+10",
+                changeType: "up",
+                sport: "Плавание",
+                initials: "ДП"
+            },
+            {
+                rank: 3,
+                name: "Максим Сидоров",
+                country: "Казахстан 🇰🇿",
+                rating: 2795,
+                change: "-5",
+                changeType: "down",
+                sport: "Гимнастика",
+                initials: "МС"
+            },
+            {
+                rank: 4,
+                name: "Андрей Козлов",
+                country: "Россия 🇷🇺",
+                rating: 2770,
+                change: "0",
+                changeType: "same",
+                sport: "Теннис",
+                initials: "АК"
+            },
+            {
+                rank: 5,
+                name: "Сергей Морозов",
+                country: "Украина 🇺🇦",
+                rating: 2745,
+                change: "+15",
+                changeType: "up",
+                sport: "Бокс",
+                initials: "СМ"
+            },
+            {
+                rank: 6,
+                name: "Павел Волков",
+                country: "Россия 🇷🇺",
+                rating: 2720,
+                change: "-8",
+                changeType: "down",
+                sport: "Фехтование",
+                initials: "ПВ"
+            },
+            {
+                rank: 7,
+                name: "Игорь Новиков",
+                country: "Беларусь 🇧🇾",
+                rating: 2695,
+                change: "+5",
+                changeType: "up",
+                sport: "Дзюдо",
+                initials: "ИН"
+            },
+            {
+                rank: 8,
+                name: "Николай Соколов",
+                country: "Казахстан 🇰🇿",
+                rating: 2670,
+                change: "0",
+                changeType: "same",
+                sport: "Борьба",
+                initials: "НС"
+            }
+        ];
+
+        function renderAthletes() {
+            const tbody = document.getElementById('athletes-body');
+            
+            athletes.forEach(athlete => {
+                const row = document.createElement('tr');
+                
+                const rankClass = athlete.rank <= 3 ? `rank-${athlete.rank}` : '';
+                
+                row.innerHTML = `
+                    <td class="rank ${rankClass}">#${athlete.rank}</td>
+                    <td>
+                        <div class="athlete-info">
+                            <div class="athlete-avatar">${athlete.initials}</div>
+                            <div>
+                                <div class="athlete-name">${athlete.name}</div>
+                                <div class="athlete-country">${athlete.country}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="rating-score">${athlete.rating}</td>
+                    <td>
+                        <span class="rating-change change-${athlete.changeType}">
+                            ${athlete.change}
+                        </span>
+                    </td>
+                    <td>${athlete.sport}</td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+        }
+
+        // Инициализация таблицы при загрузке страницы
+        document.addEventListener('DOMContentLoaded', renderAthletes);
+    </script>
+</body>
+</html>
